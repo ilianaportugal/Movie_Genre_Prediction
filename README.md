@@ -1,6 +1,6 @@
 # Movie Genre Prediction
 ## Purpose
-The purpose of this project is to create a neural network model that can predict a movie genre based on the description. I completed this project to explore Natural Language Processing (NLP), which is a machine learning technology that gives computers the ability to interpret, analyze, manipulate and comprehend human language. The process for completing this project includes:
+The purpose of this project is to create a neural network model that can predict a movie Genre based on the Description. I completed this project to explore Natural Language Processing (NLP), which is a machine learning technology that gives computers the ability to interpret, analyze, manipulate and comprehend human language. The process for completing this project includes:
 
 (1) Data Cleaning/Preparation
 
@@ -20,9 +20,11 @@ Dependencies: pandas, numpy, matplotlib, nltk, tensorflow
 
 ## Project Steps
 ### Data Cleaning/Preparation:
-In preparation for testing and training a neural network model, I balanced the data. To balance the data I analyzed the distribution of data based on Genre category. I found that a majority of the data fell within three genres (Drama, Documentary, and Comedy). I then filtered the dataset by these categories, ensuring there was a similar number of examples for each genre. 
+In preparation for testing and training a neural network model, I balanced the data. To balance the data I analyzed the distribution of data based on the Genre. I found that a majority of the data fell within three Genres (Drama, Documentary, and Comedy). I then filtered the dataset by these categories, ensuring there was a similar number of examples for each Genre. 
 
-The next step in this project was to clean and preprocess the data. I removed stopwords, special characters and converted descriptions to all lowercase to reduce noise and irrelevant information. I used the pre-processing technique of lemmatization to break words down to their root meaning. I also used the technique of tokenization to split paragraphs and sentences into smaller units.
+The next step in this project was to clean and preprocess the data. I removed stopwords, special characters and converted the Description text to all lowercase to reduce noise and irrelevant information. I used the pre-processing technique of lemmatization to break words down to their root meaning. I also used the technique of tokenization to split paragraphs and sentences into smaller units.
+
+The last step before training was to encode the categorical Genre labels into codes as the Neural Network model expects data to be numerical.
 
 
 ### Data Splitting
@@ -52,24 +54,22 @@ I used the following metrics to analyze how well my model was at predicting movi
 
 
 #### Loss
-As the model trains over the number of epochs specified, the loss value for both the training and testing sets decreased. This is a positive sign that the loss value decreased, however it is still high with a value of .71 for the training set and .69 for the testing set. Meaning the models predictions are not very close to the true values. 
+As the model trains over the number of epochs specified, the loss value for both the training and testing sets decreased. This is a positive sign that the loss value decreased, the last epoch had a loss of .29 for the training set and .46 for the testing set. Meaning the models predictions for the training set are close to the true values than the predictions for the testing set
 
 #### Accuracy
-The accuracy of both the training and testing sets increased after each epoch, the last epoch had an accuracy of 68% for the training set and 69% for the testing set. This indicates that the model was able to learn after each epoch and improve performance. 
+The accuracy of both the training and testing sets increased after each epoch, the last epoch had an accuracy of .89 for the training set and .83 for the testing set. This indicates that the model was able to learn after each epoch and improve performance. 
 
 #### Confusion Matrix
-Looking at the confusion matrix, the model did not predict any of the descriptions as a Comedy. This leads me to believe that the data is not evenly distributed and there are too few Comedy values in the dataset for the model to learn from. Most comedies were incorrectly predicted as Drama's.
-
-Looking at the actual and predicted labels for Dcoumentary and Drama, the model has a high number of true positives for each.
+Looking at the confusion matrix, the model correctly predicted a high number of true positives for each Genre. The model had the highest number of false Negatives for the Genre Drama, incorrectly predicting 743 Drama's as Comedies. Similary, a number of actual Comedies were predicted as Drama's. This indicates the model had the most difficulty differentiating between Drama's and Comedies.
 
 #### Precision
-The precision for Documentary is highest .82, meaning the model is successful at avoiding false positives. The precision for Drama is .60, this is confirmed by the Confusion Matrix as the model predicted a high number of Comedies as Dramas.
+The precision for Documentary is highest .88, meaning the model was most successful at avoiding false positives for this Genre. The precision for Drama is .80 and Comedy is .77.
 
 #### Recall
-The recall score for Documentary is .90  and Drama is .86, this indicates the model's ability to identify true positives is high.
+The recall score for Documentary is .91 and Drama is .82, this indicates the model's ability to identify true positives for these Genres is high. The recall score for Comedy is .69, the model was not as successful at predicting true positives for this Genre.
 
 #### F1-score
-The F1-score for Documentary is .86 and Drama is .71.
+The F1-score for Documentary is .90, Drama is .81, and Comedy is .72.
 
 ## About the Dataset
 Data: Genre Classification Dataset IMDb
